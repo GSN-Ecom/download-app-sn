@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Expires" content="<?php echo gmdate('D, d M Y H:i:s', time() + 31536000) . ' GMT'; ?>">
+    <meta title="Folheto Apoio Mineiro para Loja Física">
+    <link rel="stylesheet" type="text/css" href="css/style-baixeApp-SuperFriday.css">
+</head>
+<body id="lp-bf24--antecipa">
+    <div class="lp-bf24--antecipa">
+        <div class="col-content--image">
+            <img src="imgs/head-folheto.svg" class="image-logo-campanha">
+            <img src="imgs/sn_image-popup_bf24.svg" class="image-logo-campanha--mobile">
+            <div class="lp-super-friday--urgencia">
+                <p class="body2-lp-bf24">acesso antecipado começa em:</p>
+                <div class="title"><p class="h3-lp-bf24" id="countdown-timer--bf24">8d 00:00:00</p></div>
+            </div>
+        </div>
+        <div class="col-content">
+            <div class="cta-download">
+                <div class="content">
+                    <img src="imgs/qr-code-clube-sn.svg" class="qr-code-download-clube-sn">
+                    <p class="body2-lp-bf24">Escaneie o QR Code com a câmera do seu celular e faça o download do Clube Supernosso:</p>
+                </div>
+            </div>
+            <div class="title">
+                <p class="h1-lp-bf24">Seja o Primeiro a Aproveitar as Ofertas da Super Friday!</p>
+                <p class="h4-lp-bf24">Instale o App Clube Supernosso e garanta o <span class="span-title">acesso antecipado a descontos imperdíveis</span></p>
+            </div>
+            <div class="content">
+                <p class="body2-lp-bf24">Não perca a chance de garantir suas ofertas favoritas antes de todo mundo. Com o App Clube Supernosso, você aproveita as promoções da Super Friday em primeira mão e economiza mais!</p>
+            </div>
+            <div class="tutorial">
+                <p class="body2-lp-bf24" style="font-weight: bold;">Como funciona:</p>
+                <p class="body2-lp-bf24">1. Baixe o App Clube Supernosso.</p>
+                <p class="body2-lp-bf24">2. Crie ou acesse a sua conta.</p>
+                <p class="body2-lp-bf24">3. Aproveite suas promoções antecipadas e garanta economia máxima!</p>
+            </div>
+        </div>
+        <!-- botao flutuante -->
+        <div class="row-btn-bottom-bar">
+            <a href="https://ofertas.supernosso.com/clube.php" class="link-download-app--lp-bf24">
+                <div class="sn-btn-large"><p class="button-bf24">instalar o app</p></div>
+            </a>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Configurando a data e hora de término
+        const targetDate = new Date('2024-11-25T23:59:59').getTime();
+
+        // Selecionando os elementos do texto e do cronômetro
+        const countdownElement = document.getElementById('countdown-timer--bf24');
+        const urgencyTextElement = document.querySelector('.lp-super-friday--urgencia .body2-lp-bf24');
+
+        // Função para atualizar o cronômetro
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            // Se o tempo terminar
+            if (timeLeft <= 0) {
+                // Atualiza o texto e o cronômetro
+                urgencyTextElement.textContent = 'acesso antecipado já começou';
+                countdownElement.textContent = 'baixe o app agora!';
+                clearInterval(timerInterval); // Para o cronômetro
+                return;
+            }
+
+            // Calculando dias, horas, minutos e segundos restantes
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Atualizando o texto do cronômetro
+            countdownElement.textContent = `${days}d ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        // Atualiza o cronômetro a cada segundo
+        const timerInterval = setInterval(updateCountdown, 1000);
+
+        // Inicializa a contagem ao carregar a página
+        updateCountdown();
+    });
+</script>
+
+</body>
+</html>
